@@ -3,9 +3,7 @@ class User < ActiveRecord::Base
   has_many :rounds
   has_many :guesses, :through => :rounds
 
-  validates_uniqueness_of :email, :message => "You're already signed up."
-  validates_presence_of :email, :message => "Please enter a valid email"
-  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates_presence_of :username, :message => "Please enter a username"
   validates_presence_of :password, :message => "Please enter a password"
 
   def password
@@ -13,13 +11,17 @@ class User < ActiveRecord::Base
   end
 
   def password=(new_password)
-    @password = Password.create(new_password)
-    self.password_hash = @password
+    if new_password.length > 0
+      @password = Password.create(new_password)
+      self.password_hash = @password
+    else
+      @password = ""
+    end
   end
 
-  def self.authenticate(email, password)
-    user = User.find_by_email(email)
-    if user && user.password == password
+  def self.authenticate(username, password)
+    user = User.find_by_username(username)
+    if user && user.password == password 
       user
     else
       false

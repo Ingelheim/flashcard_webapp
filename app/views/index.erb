@@ -1,23 +1,25 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  <h1>Welcome to Flashcards!</h1>
+  <br>
+  <h4>Create yourself</h4>
+  <form action="/create_user" method="post">
+    <input type="text" name="post[username]" placeholder="Your name here!" required = true>
+    <input type="password" name="post[password]" placeholder="password" required = true>
+    <input type="submit" value="Create">
+  </form>
+  <br>
+  <br>
+  <h4>Log in</h4>
+  <form action="/login" method="post">
+    <input type="text" name="post[username]" placeholder="Your name here!" required = true autofocus>
+    <input type="password" name="post[password]" placeholder="password" required = true>
+    <input type="submit" value="Login">
+  </form>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+  <%if @user%>
+
+  <%@user.errors.each do |error, message|%>
+  <h5><%=message%></h5>
+  <%end%>
+  <%end%>
 </div>

@@ -12,6 +12,7 @@ require 'uri'
 require 'open-uri'
 require 'pathname'
 require 'json'
+require 'bcrypt'
 
 require 'pg'
 require 'active_record'

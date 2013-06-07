@@ -12,5 +12,11 @@ helpers do
     !current_user.nil?
   end
 
+  def current_deck
+    if session[:deck_id]
+      @current_deck ||= Deck.find_by_id(session[:deck_id])
+    end
+  end
+
 end
 

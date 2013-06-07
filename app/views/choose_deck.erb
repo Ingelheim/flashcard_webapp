@@ -1,0 +1,21 @@
+<div class="container">
+  <h1><%=current_user.username%>'s Flashcard game!</h1>
+  <br>
+  <h4>Choose your deck</h4>
+  
+  <ul>
+  <% @decks.each do |deck| %>
+
+  <li><a href=/open_deck/<%=deck.id%>><%= deck.name %></a></li>
+
+  <% end %>
+  </ul>
+
+</div>
+
+
+
+
+
+
+
