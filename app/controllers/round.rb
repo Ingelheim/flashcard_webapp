@@ -3,16 +3,22 @@ post '/answer_card' do
   prior_count = params[:post][:counter].to_i
   prior_card = Card.find_by_id(params[:post][:card_id].to_i)
 
+
   @round = Round.find_by_id(params[:post][:round_id].to_i) 
+  @guess = Guess.check(params[:post][:answer], prior_card, @round)
+  
+  @messengerx = "Correct" if @guess.correct
+  @messengerx = "Correct...NOT!" if !@guess.correct
+    
+
   if prior_count > 0 # set_current_cards.length
-    @guess = Guess.check(params[:post][:answer], prior_card, @round)
-    num = rand(set_current_cards.size)
+    # num = rand(set_current_cards.size)
+    num = prior_count - 1
     @current_card = set_current_cards[num]
     @answer_array = current_deck.answer_array(@current_card)
     @counter = prior_count - 1
     erb :game_page
   else 
-    @guess = Guess.check(params[:post][:answer], prior_card, @round)
     redirect "/stats_page/#{@round.id}"
   end
 end
@@ -25,14 +31,22 @@ get '/open_deck/:deck_id' do
   @current_card = set_current_cards.first  #@game_deck.pop
   @answer_array = current_deck.answer_array(@current_card)
   @counter = set_current_cards.length
-  p @counter
+  # p @counter
   erb :game_page
 end
 
 get '/stats_page/:round_id' do
   @round = Round.find_by_id(params[:round_id])
+  @total_questions =  @round.guesses.map {|guess| guess.correct}.count
+   @correct_answers = 0
+  @round.guesses.each do |guess|
+    @correct_answers += 1 if guess.correct
+  end
+
   erb :stats_page
 end
 
-
+get '/user_page' do 
+  erb :user_page
+end
 

@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   belongs_to :deck
   has_many :rounds
-  has_many :guesses, :through => :rounds
+  has_many :guesses, :through => :rounds, :source => :user
 
   
 end

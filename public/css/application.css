@@ -1,9 +1,51 @@
+body{
+  background-image:url('/background.jpg');
+
+}
 .container {
   margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  margin-top: 60px;
+  width: 450px;
+  padding: 20px 20px 20px 20px;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-image:url('/notecard.jpg');
+  background-repeat:repeat-y;
 }
 th {
   text-align: left;
+}
+
+h1, h2, h3 {
+  font-family: 'Spicy Rice', cursive;
+}
+
+#nav {
+  font-family: 'Spicy Rice', cursive;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  font-size: 20px;
+  color: #009933;
+  background-color: #FF9933;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#nav a {
+  color: #009933;
+  text-align: center;
+}
+
+#nav p{
+
+  display: inline;
+  padding: 30px;
+  
+}
+
+.links {
+  text-align: center;
+  margin: 15px;
+
 }
