@@ -18,5 +18,11 @@ helpers do
     end
   end
 
+  def set_current_cards
+      @array = []
+      current_deck.cards.each {|card| @array << card}
+      @array
+  end
+
 end
 
