@@ -5,7 +5,7 @@
   <form action="/create_user" method="post">
     <input type="text" name="post[username]" placeholder="Your name here!" required = true>
     <input type="password" name="post[password]" placeholder="password" required = true>
-    <input type="submit" value="Create">
+    <input class="button" type="submit" value="Create">
   </form>
   <br>
   <br>
@@ -13,7 +13,7 @@
   <form action="/login" method="post">
     <input type="text" name="post[username]" placeholder="Your name here!" required = true autofocus>
     <input type="password" name="post[password]" placeholder="password" required = true>
-    <input type="submit" value="Login">
+    <input class="button" type="submit" value="Login">
   </form>
 
   <%if @user%>

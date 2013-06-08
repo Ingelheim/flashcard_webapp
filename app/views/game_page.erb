@@ -4,9 +4,9 @@
   <h4>Answer the question to the best of your ability</h4>
 
   <p><%= @current_card.question %></p>
-  <br><br>
+  <br>
   
-  <form method="post" action="/answer_card" > 
+  <form method="post" action="/answer_card" id="game"> 
     <% @answer_array.each do |answer| %>
       <input type="radio" name="post[answer]" value="<%=answer%>"> <%=answer.capitalize%><br>
     <% end %>
@@ -15,15 +15,14 @@
     <input name="post[card_id]" type="hidden" value=<%=@current_card.id%>> 
     <input name="post[counter]" type="hidden" value=<%=@counter %>> 
    
-
-<br><br><br>
-    <input type="submit" value="guess">  
+<br>
+    <input class="button" type="submit" value="guess" >  
   </form>
-<br><br><br>
+<br>
 
 <% if @guess %>
   
-  <h3>The correct answer to the last question was: <%= @messengerx %> </h3>
+  <h3>Your answer to the last question was: <%= @messengerx %> </h3>
 
 <% end %>
 

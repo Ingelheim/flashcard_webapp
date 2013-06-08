@@ -3,14 +3,11 @@ post '/answer_card' do
   prior_count = params[:post][:counter].to_i
   prior_card = Card.find_by_id(params[:post][:card_id].to_i)
 
-
   @round = Round.find_by_id(params[:post][:round_id].to_i) 
   @guess = Guess.check(params[:post][:answer], prior_card, @round)
-  
   @messengerx = "Correct" if @guess.correct
   @messengerx = "Correct...NOT!" if !@guess.correct
-    
-
+  
   if prior_count > 0 # set_current_cards.length
     # num = rand(set_current_cards.size)
     num = prior_count - 1
@@ -18,11 +15,11 @@ post '/answer_card' do
     @answer_array = current_deck.answer_array(@current_card)
     @counter = prior_count - 1
     erb :game_page
+    # erb :_question, layout: false
   else 
     redirect "/stats_page/#{@round.id}"
   end
 end
-
 
 get '/open_deck/:deck_id' do
   deck = Deck.find_by_id(params[:deck_id])
@@ -49,4 +46,11 @@ end
 get '/user_page' do 
   erb :user_page
 end
+
+
+# if request.xhr?
+#   erb :_question
+# else
+#   erb :game_page
+# end
 
