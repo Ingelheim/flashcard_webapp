@@ -1,0 +1,12 @@
+<div id="appended_stats">
+
+  <h3> <%= @correct_answers %> correct out of <%= @total_questions %> questions. 
+  <%= ((@correct_answers/@total_questions.to_f)*100).round(2)%>% correct</h3>
+
+  <%@round.guesses.each do |guess|%>
+  Q: <%=guess.card.question%> <br>
+  A: <%=guess.card.answer%><br>
+  Were you correct? <%=guess.correct%>
+  <br><br>
+  <%end%>
+</div>

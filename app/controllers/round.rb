@@ -39,8 +39,11 @@ get '/stats_page/:round_id' do
   @round.guesses.each do |guess|
     @correct_answers += 1 if guess.correct
   end
-
-  erb :stats_page
+  if request.xhr?
+    erb :_stats, :layout => false
+  else
+    erb :stats_page
+  end
 end
 
 get '/user_page' do 

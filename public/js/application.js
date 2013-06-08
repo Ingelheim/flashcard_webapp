@@ -1,21 +1,32 @@
+// $(document).ready(function() {
+//   $("#history a").on("click", function(event){
+//     event.preventDefault()
+//     var url = $(this).attr("href")
+//     $(this).addClass("clicked")
+//     $.get(url, function(response){
+//       $(".container").append(response)
+//     });
+//   });
+// });
+
+
 $(document).ready(function() {
+  $("#history a").on("click", function(event){
+    event.preventDefault()
+    var url = $(this).attr("href")
 
-  $('body').on('submit', '#game', function(e){
-    e.preventDefault();
-    // send a request to controller (via AJAX post)
+    if($(this).hasClass('clicked')==false){
+      $(this).addClass("clicked")
+      $.get(url, function(response){
+        $(".container").append(response)
+      });
 
-    // have controller record response (same as it currently does)
+    } else {
+      $("#appended_stats").remove()
+      $(this).removeClass("clicked")
+    }
 
-    // find out if response was correct or incorrect
-    // e.g. var answer = "The answer to the last question was: Correct"
-
-    // insert html string onto page
-    // $('.answer').html(answer)
-
-    // get back partial of the new form to put on page (and store it in response, etc.)
-
-    // replace current form with new form
-    // $('#game').html(response);
   });
-
 });
+
+
