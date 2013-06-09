@@ -1,23 +1,36 @@
 body{
   background-image:url('/background.jpg');
-
 }
-.container {
+
+#image_holder {
   margin: 20px auto;
   margin-top: 60px;
-  width: 450px;
-  padding: 20px 20px 20px 20px;
+  width: 600px;
   border: 1px solid black;
   border-radius: 25px;
   background-image:url('/notecard.jpg');
   background-repeat:repeat-y;
 }
+
+.container {
+  
+  padding: 10px 20px; 
+  width: 560px;
+  
+ 
+
+}
 th {
   text-align: left;
 }
 
+h1 {
+  font-size: 40px;
+}
+
 h1, h2, h3 {
   font-family: 'Spicy Rice', cursive;
+  text-align: center;
 }
 
 #nav {
@@ -47,7 +60,6 @@ h1, h2, h3 {
 .links {
   text-align: center;
   margin: 15px;
-
 }
 
 .button {
@@ -55,4 +67,26 @@ h1, h2, h3 {
   color: green;
   background-color: #FF9933; 
   font-weight: bold;
+}
+
+.select_deck {
+  height: 50px;
+  width: 80%;
+  background-color: green;
+  color: #FF9933;
+  font-size: 25px;
+}
+
+.select_deck option{
+
+  background-color: green;
+  color: #FF9933;
+  font-size: 25px;
+}
+
+#history a {
+  text-decoration: none;
+  color: black;
+  font-family: 'Spicy Rice', cursive;
+
 }

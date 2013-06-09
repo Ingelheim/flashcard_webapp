@@ -4,14 +4,20 @@
   <h4>Choose your deck</h4>
   
   <ul>
-  <% @decks.each do |deck| %>
+  
 
-  <li><a href=/open_deck/<%=deck.id%>><%= deck.name %></a></li>
+  <select class="select_deck" ONCHANGE="location = this.options[this.selectedIndex].value;">
+    <option>Select from below</option>
+    <% @decks.each do |deck| %>
+    <option value=/open_deck/<%=deck.id%>><%= deck.name %></option>
+    <% end %>
+  </select>
 
-  <% end %>
+  
   </ul>
 
 </div>
+
 
 
 
