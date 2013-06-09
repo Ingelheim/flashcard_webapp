@@ -14,10 +14,19 @@ post '/answer_card' do
     @current_card = set_current_cards[num]
     @answer_array = current_deck.answer_array(@current_card)
     @counter = prior_count - 1
-    erb :game_page
-    # erb :_question, layout: false
+    if request.xhr?
+      erb :_question, layout: false
+    else
+      erb :game_page
+    end
   else 
-    redirect "/stats_page/#{@round.id}"
+    if request.xhr?
+      "Hi"
+      erb :stats_page
+    else
+
+      redirect "/stats_page/#{@round.id}"
+    end
   end
 end
 

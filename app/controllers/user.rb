@@ -15,7 +15,14 @@ end
 
 post '/login' do
   user = User.authenticate(params[:post][:username],params[:post][:password])
-  if user
+  
+  if user && request.xhr?
+    @decks = Deck.all
+    session[:user_id] = user.id
+    erb :choose_deck
+  elsif request.xhr?
+    erb :_index
+  elsif user
    session[:user_id] = user.id
    redirect "/user/#{user.id}"
   else
@@ -25,6 +32,10 @@ end
 
 get '/logout' do
   session.clear
-  erb :index
+  if request.xhr?
+    erb :_index, :layout => false
+  else
+    erb :index
+  end
 end
 

@@ -24,7 +24,7 @@
   <p>You are logged in as: <%=current_user.username%></p>
   <p><a href="/user/<%=current_user.id%>">Start a new game</a></p>
   <p><a href="/user_page">Go to your user page</a></p>
-  <p><a href="/logout">Logout</a></p>
+  <p><span class="logout"><a href="/logout">Logout</a></span></p>
   </div>
   <%end%>
 
@@ -32,8 +32,8 @@
 
 </head>
 <body>
-  <div id="image_holder">
+  
   <%= yield %>
-  </div>
+  
 </body>
 </html>

@@ -1,14 +1,15 @@
-<div class="container">
-  <h1>Here's how you did <%=current_user.username%></h1>
- 
-  <h3>You got this many questions correct: <%= @correct_answers %></h3>
-  <h3>Out of <%= @total_questions %> total questions for a percentage of <%= ((@correct_answers/@total_questions.to_f)*100).round(2)  %>%</h3>
+<div id="image_holder">  
+  <div class="container">
+    <h1>Here's how you did <%=current_user.username%></h1>
+   
+    <h3>You got this many questions correct: <%= @correct_answers %></h3>
+    <h3>Out of <%= @total_questions %> total questions for a percentage of <%= ((@correct_answers/@total_questions.to_f)*100).round(2)  %>%</h3>
 
-  <%@round.guesses.each do |guess|%>
-  Q: <%=guess.card.question%> <br>
-  A: <%=guess.card.answer%><br>
-  Your answer was: <%=guess.correct%>
-  <br><br>
-  <%end%>
+    <%@round.guesses.each do |guess|%>
+    Q: <%=guess.card.question%> <br>
+    A: <%=guess.card.answer%><br>
+    Your answer was: <%=guess.correct%>
+    <br><br>
+    <%end%>
+  </div>
 </div>
-
