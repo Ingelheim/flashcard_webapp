@@ -1,0 +1,17 @@
+<div class="container">
+    <%if current_user%>
+
+    <h1><%=current_user.username%>'s Game History</h1>
+    <%current_user.rounds.each do |round|%>
+      <p>
+        <div id="history">
+          <a href="/stats_page/<%=round.id%>">Game: <%=round.id%> Deck: <%=round.deck.name%></a>
+          <div id="catch"></div>
+        </div>
+
+      <p>
+    <% end %>
+    <%else%>
+    <h1> ACCESS DENIED</h1>
+    <%end%>
+  </div>

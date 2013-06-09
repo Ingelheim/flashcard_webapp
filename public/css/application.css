@@ -1,4 +1,4 @@
-body{
+html{
   background-image:url('/background.jpg');
 }
 
@@ -12,13 +12,41 @@ body{
   background-repeat:repeat-y;
 }
 
+.report p {
+  font-size: 18px;
+  font-style: bold;
+  font-style: italic;
+}
+/*.bucket {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  perspective: 800px;
+}
+
+#card {
+  width:100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+#card figure {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+#card .back {
+  transform: rotateY( 180deg);
+}*/
+
 .container {
-  
   padding: 10px 20px; 
   width: 560px;
-  
- 
-
 }
 th {
   text-align: left;

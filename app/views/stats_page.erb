@@ -4,12 +4,13 @@
    
     <h3>You got this many questions correct: <%= @correct_answers %></h3>
     <h3>Out of <%= @total_questions %> total questions for a percentage of <%= ((@correct_answers/@total_questions.to_f)*100).round(2)  %>%</h3>
-
+    <div class="report">
     <%@round.guesses.each do |guess|%>
-    Q: <%=guess.card.question%> <br>
-    A: <%=guess.card.answer%><br>
-    Your answer was: <%=guess.correct%>
+    <p>Q: <%=guess.card.question%></p> <br>
+    <p>A: <%=guess.card.answer%></p><br>
+    <p>Your answer was: <%=guess.correct%></p>
     <br><br>
     <%end%>
+    </div>
   </div>
 </div>

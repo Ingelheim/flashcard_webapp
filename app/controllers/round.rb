@@ -8,26 +8,27 @@ post '/answer_card' do
   @messengerx = "Correct" if @guess.correct
   @messengerx = "Correct...NOT!" if !@guess.correct
   
-  if prior_count > 0 # set_current_cards.length
+  if prior_count > 8 # set_current_cards.length
     # num = rand(set_current_cards.size)
     num = prior_count - 1
     @current_card = set_current_cards[num]
     @answer_array = current_deck.answer_array(@current_card)
     @counter = prior_count - 1
-    if request.xhr?
-      erb :_question, layout: false
-    else
+    # if request.xhr?
       erb :game_page
-    end
+    # else
+      # erb :game_page
+    # end
   else 
-    if request.xhr?
-      "Hi"
-      erb :stats_page
-    else
+    # if request.xhr?
+    #   "Hi"
+      # erb :stats_page
+    # else
 
       redirect "/stats_page/#{@round.id}"
-    end
+  
   end
+  # redirect "/stats_page/#{@round.id}"
 end
 
 get '/open_deck/:deck_id' do
@@ -38,7 +39,13 @@ get '/open_deck/:deck_id' do
   @answer_array = current_deck.answer_array(@current_card)
   @counter = set_current_cards.length
   # p @counter
-  erb :game_page
+  # if request.xhr?
+  
+    # erb :_game_page
+  # else
+  
+    erb :game_page
+  # end
 end
 
 get '/stats_page/:round_id' do
@@ -48,14 +55,20 @@ get '/stats_page/:round_id' do
   @round.guesses.each do |guess|
     @correct_answers += 1 if guess.correct
   end
-  if request.xhr?
+  p @round.inspect
+  p @total_questions.inspect
+  p @correct_answers.inspect
+  # if request.xhr?
     erb :_stats, :layout => false
-  else
-    erb :stats_page
-  end
+  # else
+    # erb :stats_page
+  # end
 end
 
 get '/user_page' do 
+  # if request.xhr?
+    # erb :_user_page, :layout => false
+  # end
   erb :user_page
 end
 

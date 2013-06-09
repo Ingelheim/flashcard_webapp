@@ -39,13 +39,13 @@ $(document).ready(function() {
     }
   });
 
-  $('#game').on('submit', function(event){
+  $('#game').on('click', '.button', function(event){
     event.preventDefault();
-    var url = $(this).attr('action');
-    var data = $(this).serialize();
+    var url = $('form').attr('action');
+    var data = $('form').serialize();
     $.post(url, data, function(response){
-      $('.container').html();
-      $('.container').html(response);
+      $('.container').html('');
+      $('#image_holder').html(response);
 
     });
   });
@@ -55,7 +55,17 @@ $(document).ready(function() {
     var url = $(this).attr('href');
     $.get(url, function(response){
       $('.links').hide();
+      $('.container').remove();
       $('#image_holder').html(response);
+    });
+  });
+
+  $('.user_page a').on('click', function(e){
+    e.preventDefault();
+    var url = $(this).attr('href');
+    $.get(url, function(response){
+      $('.container').remove();
+      $('#image_holder').after(response);
     });
   });
 
@@ -64,7 +74,8 @@ $(document).ready(function() {
     var url = $(this).attr('action');
     var data = $(this).serialize();
     $.post(url, data, function(response){
-      $('#image_holder').html(response);
+      $('.container').remove();
+      $('#image_holder').after(response);
     });
   });
   
@@ -73,14 +84,30 @@ $(document).ready(function() {
     var url = $(this).attr('action');
     var data = $(this).serialize();
     $.post(url, data, function(response){
-      
-      $('html').html(response);
+      $('.container').remove();
+      $('#image_holder').after(response);
     });
   });
 
-  $('#choose_deck').on('select', function(e){
+  $('.select_deck').on('change', function(e){
     e.preventDefault();
+    var url = $(this).val();
+    $.get(url, function(response){
+      $(".container").remove();
+      $('#image_holder').html(response);
+    });
   });
+
+  $('.new_game a').on('click', function(e){
+    e.preventDefault();
+    var url = $(this).attr('href');
+    $.get(url, function(response){
+      $(".container").remove();
+      $('#image_holder').after(response);
+    });
+  });
+
+
 });
 
 
